@@ -31,22 +31,23 @@ public class birdClass {
 	
 
 	void setBirdPower(String bt, String c, String act) {
-	if(bt == "Skull") {
-		birdType = "Predator";
-	}else{
-		birdType = "Bird Tucking:";
-	}
-		 
-		 
-	if(c == "Brown") {
-		cardColor = "When Activated";
-	}else if(c == "Pink") {
-		cardColor = "Once Beetween Turns";
-	}else {
-		cardColor = "When Played:";
-	}
+		if(bt == "skull") {
+			birdType = "Predator";
+		}else if(bt == "bird"){
+			birdType = "Bird Tucking:";
+		}else {
+			birdType = "normal";
+		}
+			
+		if(c == "Brown") {
+			cardColor = "When Activated";
+		}else if(c == "Pink") {
+			cardColor = "Once Beetween Turns";
+		}else {
+			cardColor = "When Played:";
+		}
 		
-	birdPower = cardColor + " " + " " + birdType + " " + act;
+		birdPower = cardColor + " " + birdType + " " + act;
 	 }  
 
 	 void setBirdPoints(Integer p) {
@@ -128,12 +129,32 @@ public class birdClass {
 		}
 	}
 	
+	public void SelectCardToPlay(Integer select) {
+		
+		birdClass selCard = new birdClass();
+		selCard = cardList.get(select);
+		System.out.println("Card selected: ");
+		System.out.println("Card Name: " + selCard.getBirdName());
+		System.out.println("Habitat: " + selCard.getBirdHabitat());
+		System.out.println("Food: " + selCard.getBirdFood());
+		System.out.println("Points: " + selCard.getBirdPoints());
+		System.out.println("Nest: "+ selCard.getBirdNest());
+		System.out.println("Egg Limit: " + selCard.getBirdEggLimit());
+		System.out.println("Ability: "+ selCard.getBirdPower());
+		System.out.println();
+		
+		
+		
+	}
+	
+	
 	public void drawCards() {
 		
 		birdClass getCard = new birdClass();
 		
 		for(int a=0; a < cardList.size(); a++) {
 			getCard = cardList.get(a);
+			System.out.println("Card Number: " + a);
 			System.out.println("Card Name: " + getCard.getBirdName());
 			System.out.println("Habitat: " + getCard.getBirdHabitat());
 			System.out.println("Food: " + getCard.getBirdFood());
