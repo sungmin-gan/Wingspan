@@ -16,25 +16,37 @@ public class birdClass {
 	 String birdType;
 	 String birdPower;
 	 Integer birdCardCount = 0;
+	 File textFile;
+	 Scanner input;
+	 String cards;
+	 
+	 public birdClass(String file) throws FileNotFoundException {
+		 textFile = new File(file);
+		 initializeBirdList(textFile);
+		 
+	 }
+	 public birdClass() {
+		 
+	 }
 	
-	 void setBirdPower(String bt, String c, String act) {
-			
-		 if(bt == "skull") {
-			 birdType = "Predator";
-		 }else{
-			 birdType = "Bird Tucking:";
-		 }
+
+	void setBirdPower(String bt, String c, String act) {
+	if(bt == "Skull") {
+		birdType = "Predator";
+	}else{
+		birdType = "Bird Tucking:";
+	}
 		 
 		 
-		if(c == "Brown") {
-			 cardColor = "When Activated";
-		 }else if(c == "Pink") {
-			 cardColor = "Once Beetween Turns";
-		 }else {
-			 cardColor = "When Played:";
-		 }
+	if(c == "Brown") {
+		cardColor = "When Activated";
+	}else if(c == "Pink") {
+		cardColor = "Once Beetween Turns";
+	}else {
+		cardColor = "When Played:";
+	}
 		
-		birdPower = cardColor + " " + " " + birdType + act;
+	birdPower = cardColor + " " + " " + birdType + " " + act;
 	 }  
 
 	 void setBirdPoints(Integer p) {
@@ -77,43 +89,61 @@ public class birdClass {
 	 String getBirdPower() {
 		 return birdPower;
 	 }
-	void initializeBirdList() throws FileNotFoundException {
-		//birdClass newCard = new birdClass();
-		String temp;
-		String color;
-		String act;
-		File birdFile = new File("birdListCards.txt");
-		Scanner readFile = new Scanner(birdFile);
-		
-		while(readFile.hasNext()) {
-			birdClass newCard = new birdClass();
+	void initializeBirdList(File textfile) throws FileNotFoundException {
+		try {
+			input = new Scanner(textFile);
+			String temp;
+			String color;
+			String activity;
 			
-			temp = readFile.nextLine();
-			newCard.setBirdName(temp);
-			temp = readFile.nextLine();
-			newCard.setBirdHabitat(temp);
-			temp = readFile.nextLine();
-			newCard.setBirdFood(temp);
-			temp = readFile.nextLine();
-			newCard.setBirdPoints(Integer.parseInt(temp));
-			temp = readFile.nextLine();
-			newCard.setBirdNest(temp);
-			temp = readFile.nextLine();
-			newCard.setBirdEgg(Integer.parseInt(temp));
-			temp = readFile.nextLine();
-			color = readFile.nextLine();
-			act = readFile.nextLine();
-			newCard.setBirdPower(temp, color, act);
-			cardList.add(newCard);
-			if(readFile.nextLine() == " ") {
-				continue;
+			while(input.hasNext()) {
+				birdClass newCard = new birdClass();
+				temp = input.nextLine();
+				newCard.setBirdName(temp);
+				temp = input.nextLine();
+				newCard.setBirdHabitat(temp);
+				temp = input.nextLine();
+				newCard.setBirdFood(temp);
+				temp = input.nextLine();
+				newCard.setBirdPoints(Integer.parseInt(temp));
+				temp = input.nextLine();
+				newCard.setBirdNest(temp);
+				temp = input.nextLine();
+				newCard.setBirdEgg(Integer.parseInt(temp));
+				temp = input.nextLine();
+				color = input.nextLine();
+				activity = input.nextLine();
+				newCard.setBirdPower(temp, color, activity);
+				cardList.add(newCard);
+				birdCardCount ++;
+				if(input.nextLine() == " ") {
+					continue;
+				}
+				
 			}
 			
+			
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
-		//readFile.close();
-		birdClass getCard = new birdClass();
-		getCard = cardList.get(1);
-		System.out.print(getCard.getBirdPower());
-		
 	}
+	
+	public void drawCards() {
+		
+		birdClass getCard = new birdClass();
+		
+		for(int a=0; a < cardList.size(); a++) {
+			getCard = cardList.get(a);
+			System.out.println("Card Name: " + getCard.getBirdName());
+			System.out.println("Habitat: " + getCard.getBirdHabitat());
+			System.out.println("Food: " + getCard.getBirdFood());
+			System.out.println("Points: " + getCard.getBirdPoints());
+			System.out.println("Nest: "+ getCard.getBirdNest());
+			System.out.println("Egg Limit: " + getCard.getBirdEggLimit());
+			System.out.println("Ability: "+ getCard.getBirdPower());
+			System.out.println();
+		}
+		System.out.println("Cards in ArrayList: " + birdCardCount);
+	}
+	
 }
