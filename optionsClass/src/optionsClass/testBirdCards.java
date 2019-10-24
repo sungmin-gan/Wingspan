@@ -1,17 +1,19 @@
 package optionsClass;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
 class testBirdCards {
 
 	
 	ArrayList<birdClass> cards = new ArrayList<birdClass>();
 	
-	@Test
+	/*
+	 * @Test
+	 
 	void birdCards() {
 		
 		birdClass newBird0 = new birdClass();
@@ -31,6 +33,7 @@ class testBirdCards {
 		
 		
 	}
+	*/
 	
 	
 }

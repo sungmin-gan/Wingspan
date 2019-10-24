@@ -72,7 +72,7 @@ public class birdClass {
 	 Integer getBirdPoints() {
 		 return birdPoints;
 	 }
-	 String getBirdName() {
+	 public String getBirdName() {
 		 return birdName;
 	 }
 	 String getBirdHabitat() {
@@ -148,8 +148,9 @@ public class birdClass {
 	}
 	
 	
-	public void drawCards() {
-		
+	public ArrayList<birdClass> drawCards() {
+		//Temporarily returning cardlist to access in main, so that we can deplete food. 
+		//Preferably, this method would be moved to Player to accommodate for each player's tokens and cubes
 		birdClass getCard = new birdClass();
 		
 		for(int a=0; a < cardList.size(); a++) {
@@ -165,6 +166,7 @@ public class birdClass {
 			System.out.println();
 		}
 		System.out.println("Cards in ArrayList: " + birdCardCount);
+		return this.cardList;
 	}
 	
 }
