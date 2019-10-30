@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Scanner;
 
 public class birdClass {
-	 
+	 // Array List and variables that hold the values of each bird 
 	 ArrayList<birdClass> cardList = new ArrayList<birdClass>();
 	 Integer birdPoints;
 	 String birdName;
@@ -20,16 +20,21 @@ public class birdClass {
 	 Scanner input;
 	 String cards;
 	 
+	 //class constructor that takes in a text file and it reads its contents and initializes an 
+	 //array list that later on you can use the arrayList as to each index holds a different bird card
 	 public birdClass(String file) throws FileNotFoundException {
 		 textFile = new File(file);
 		 initializeBirdList(textFile);
 		 
 	 }
+	 
+	 //constructor to create objects of the birds
 	 public birdClass() {
 		 
 	 }
 	
-
+	 //functions that reads in the information we are obtaining from the text file and initializing 
+	 //the cards "birds" abilities.
 	void setBirdPower(String bt, String c, String act) {
 		if(bt == "skull") {
 			birdType = "Predator";
@@ -50,6 +55,7 @@ public class birdClass {
 		birdPower = cardColor + " " + birdType + " " + act;
 	 }  
 
+	//setters that set the values of each card accordingly
 	 void setBirdPoints(Integer p) {
 		 birdPoints = p;
 	 }
@@ -68,7 +74,7 @@ public class birdClass {
 	 void setBirdEgg(Integer eg) {
 		 birdEggLimit = eg;
 	 }
-	 
+	 //getters that allows us to extract specific values of the cards
 	 Integer getBirdPoints() {
 		 return birdPoints;
 	 }
@@ -90,6 +96,9 @@ public class birdClass {
 	 String getBirdPower() {
 		 return birdPower;
 	 }
+	 
+	 //function that reads the text file and initializes each card with its correct values and puts them into
+	 //an Array List to be able to used as playing or drawing cards from a stack 
 	void initializeBirdList(File textfile) throws FileNotFoundException {
 		try {
 			input = new Scanner(textFile);
@@ -129,6 +138,8 @@ public class birdClass {
 		}
 	}
 	
+	//function that allows the player to select a given card from his hand to play, it will display all of the
+	//cards attributes.
 	public void SelectCardToPlay(Integer select) {
 		
 		birdClass selCard = new birdClass();
