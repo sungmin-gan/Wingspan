@@ -1,52 +1,58 @@
-package wingspan;
+package model;
 
 import java.util.ArrayList;
-import optionsClass.birdClass;
 
-public class player {
-	private String Name;
-	private ArrayList<birdClass> birds;
-	private int actionCubeCount = 8;
-	private String actionCubeColor = "";
+public class Player {
+	String name;
+	int invertebrateTokens, seedTokens, fishTokens, fruitTokens, rodentTokens;
+	ArrayList<BirdCard> birdCards = new ArrayList<BirdCard>();
+	ArrayList<BonusCard> bonusCards = new ArrayList<BonusCard>();
 	
-	public int getActionCubeCount() {
-		return actionCubeCount;
-	}
-
-	public void setActionCubeCount(int actionCubeCount) {
-		this.actionCubeCount = actionCubeCount;
-	}
-
-	public String getActionCubeColor() {
-		return actionCubeColor;
-	}
-
-	public void setActionCubeColor(String actionCubeColor) {
-		this.actionCubeColor = actionCubeColor;
-	}
-
-	public player() {}; 
-	
-	public player(String name) {
-		Name = name;
+	Player(String _name){
+		name = _name;
 	}
 	
-	public String getName() {
-		return Name;
+	public void addFoodToken(FoodType _foodType) {
+		switch(_foodType) {
+		case invertebrate:
+			invertebrateTokens += 1;
+			break;
+		case seed:
+			seedTokens += 1;
+			break;
+		case fish:
+			fishTokens += 1;
+			break;
+		case fruit:
+			fruitTokens += 1;
+			break;
+		case rodent:
+			rodentTokens += 1;
+			break;
+		}
 	}
 	
-	public void addBirdCard(birdClass _bird) {
-		birds.add(_bird);
+	public void spendFoodToken(FoodType _foodType) {
+		switch(_foodType) {
+		case invertebrate:
+			invertebrateTokens -= 1;
+			break;
+		case seed:
+			seedTokens -= 1;
+			break;
+		case fish:
+			fishTokens -= 1;
+			break;
+		case fruit:
+			fruitTokens -= 1;
+			break;
+		case rodent:
+			rodentTokens -= 1;
+			break;
+		}
 	}
 	
-	public String getBirdNameByIndex(int _index) {
-		return birds.get(_index).getBirdName();
-	}
-	
-	public int numOfBirdCards() {
-		return birds.size();
-	}
-	
-	
-	
+	public void addBonusCard(BonusCard _bonusCard) { bonusCards.add(_bonusCard); }
+	public void removeBonusCard(int index) { bonusCards.remove(index); }
+	public BonusCard getBonusCard(int index) { return bonusCards.get(index); }
 }
