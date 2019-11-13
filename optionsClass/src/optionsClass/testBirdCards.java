@@ -1,6 +1,7 @@
-package optionsClass;
+package optionsClass.src.optionsClass;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.util.ArrayList;
 
@@ -39,3 +40,4 @@ class testBirdCards {
 	
 	
 }
+ 

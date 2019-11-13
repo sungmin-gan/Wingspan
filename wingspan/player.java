@@ -1,7 +1,7 @@
 package wingspan;
 
 import java.util.ArrayList;
-import optionsClass.birdClass;
+import optionsClass.src.optionsClass.birdClass;
 
 public class player {
 	private String Name;
